@@ -50,7 +50,7 @@ final class FavoriteDetailViewController: UIViewController {
     }
     
     
-    private func applyConstraints(){
+    private func applyConstraints() {
         
         let bodyQuoteConstraints = [
             bodyQuote.centerXAnchor.constraint(equalTo: view.centerXAnchor),

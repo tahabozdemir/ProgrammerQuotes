@@ -93,7 +93,7 @@ final class FavoritesTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    private func applyConstraints(){
+    private func applyConstraints() {
         
         let profileUIImageViewConstraints = [
             profileUIImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -129,7 +129,7 @@ final class FavoritesTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate(dateAndLabelNameStackViewConstraints)
     }
     
-    private func makeResponsiveCircle(){
+    private func makeResponsiveCircle() {
         profileUIImageView.layer.cornerRadius = contentView.frame.width / 8
     }
 }

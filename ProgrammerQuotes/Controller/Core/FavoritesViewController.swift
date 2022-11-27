@@ -10,7 +10,7 @@ import Kingfisher
 final class FavoritesViewController: UIViewController {
     private var viewModel:FavoritesViewModel?
     
-    init(favoritesVM: FavoritesViewModel){
+    init(favoritesVM: FavoritesViewModel) {
         super.init(nibName: nil, bundle: nil)
         viewModel = favoritesVM
     }
@@ -49,7 +49,7 @@ final class FavoritesViewController: UIViewController {
     }
 }
 
-extension FavoritesViewController:UITableViewDelegate, UITableViewDataSource{
+extension FavoritesViewController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.getFavorites.count ?? 0
     }
@@ -57,11 +57,14 @@ extension FavoritesViewController:UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoritesTableViewCell.identifier) as? FavoritesTableViewCell else {return UITableViewCell()}
         cell.labelName.text = viewModel?.getFavorites[indexPath.row].quote?.author
+        
         let imageURL = URL(string: viewModel?.getFavorites[indexPath.row].imageURLString ?? "")
         cell.profileUIImageView.kf.setImage(with:imageURL)
+        
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         formatter.dateStyle = .medium
+        
         cell.labelDate.text = formatter.string(from: (viewModel?.getFavorites[indexPath.row].date)!)
         return cell
     }
@@ -71,13 +74,13 @@ extension FavoritesViewController:UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        switch editingStyle{
+        switch editingStyle {
         case .delete :
             let totalRows = tableView.numberOfRows(inSection: indexPath.section)
             viewModel?.deleteRow(indexPath: indexPath)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
-            if(indexPath.row == totalRows - 1){
+            if(indexPath.row == totalRows - 1) {
                 viewModel?.deleteLastRowConfigure()
             }
             

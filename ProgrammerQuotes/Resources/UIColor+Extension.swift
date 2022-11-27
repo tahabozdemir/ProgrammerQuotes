@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-extension UIColor{
+extension UIColor {
     static let mainColor = UIColor(red: 0.35, green: 0.85, blue: 0.67, alpha: 1.00)
     static let softWhiteColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00)
 }

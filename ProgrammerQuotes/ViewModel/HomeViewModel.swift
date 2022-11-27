@@ -8,19 +8,19 @@ import Foundation
 import Kingfisher
 import RealmSwift
 
-protocol QuoteShowable{
+protocol QuoteShowable {
     func viewDidLoad()
     func getQuote()
     func getProfileImage()
 }
 
-protocol QuoteEditable{
+protocol QuoteEditable {
     func addFavorite(favorite: Favorite)
     func deleteFavorite(favorite: Favorite)
     func addFavoritesToggle()
 }
 
-final class HomeViewModel{
+final class HomeViewModel {
     let realm = RealmService.shared.realm
     lazy var favoriteQuotes: Results<Favorite> = realm.objects(Favorite.self)
     weak var view: HomeViewProtocol?
@@ -33,7 +33,7 @@ final class HomeViewModel{
     }
 }
 
-extension HomeViewModel: QuoteShowable{
+extension HomeViewModel: QuoteShowable {
     func viewDidLoad() {
         getQuote()
         getProfileImage()
@@ -54,8 +54,9 @@ extension HomeViewModel: QuoteShowable{
         view?.prepareAddFavorites()
     }
     
-    func getProfileImage(){
+    func getProfileImage() {
         guard let author = quote?.author else {return}
+        
         APICallerWiki.shared.getImage(with: author) { [weak self] result in
             switch result {
             case .success(let result):
@@ -80,12 +81,12 @@ extension HomeViewModel: QuoteShowable{
     }
 }
 
-extension HomeViewModel: QuoteEditable{
+extension HomeViewModel: QuoteEditable {
     func addFavorite(favorite: Favorite){
         RealmService.shared.create(favorite)
     }
     
-    func deleteFavorite(favorite: Favorite){
+    func deleteFavorite(favorite: Favorite) {
         RealmService.shared.delete(favorite)
     }
     

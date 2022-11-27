@@ -8,35 +8,35 @@
 import Foundation
 import RealmSwift
 
-final class RealmService{
+final class RealmService {
     private init() {}
     static let shared = RealmService()
     
-    func getDatabasePath() -> URL?{
+    func getDatabasePath() -> URL? {
         return Realm.Configuration.defaultConfiguration.fileURL
     }
     
     var realm = try! Realm()
     
     func create<T: Object>(_ object: T){
-        do{
+        do {
             try realm.write{
                 realm.add(object)
             }
         }
         
-        catch{
+        catch {
             print(error)
         }
     }
     
-    func delete<T: Object>(_ object: T){
-        do{
+    func delete<T: Object>(_ object: T) {
+        do {
             try realm.write{
                 realm.delete(object)
             }
         }
-        catch{
+        catch {
             print(error)
         }
     }

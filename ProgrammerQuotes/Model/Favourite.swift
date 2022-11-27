@@ -8,7 +8,7 @@ import Foundation
 import RealmSwift
 import UIKit
 
-final class Favorite: Object{
+final class Favorite: Object {
     @objc dynamic weak var quote: Quote? = nil
     @objc dynamic var imageURLString: String? = nil
     @objc dynamic var date: Date? = nil

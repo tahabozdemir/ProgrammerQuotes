@@ -7,7 +7,7 @@
 import Foundation
 import RealmSwift
 
-final class Quote: Object, Codable{
+final class Quote: Object, Codable {
     @objc dynamic var id: String = ""
     @objc dynamic var author: String = ""
     @objc dynamic var en: String = ""

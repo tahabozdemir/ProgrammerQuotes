@@ -7,13 +7,13 @@
 import Foundation
 import RealmSwift
 
-protocol FavoritesViewModelProtocol{
+protocol FavoritesViewModelProtocol {
     var getFavorites: Results<Favorite> {get}
     func deleteRow(indexPath: IndexPath)
     func deleteLastRowConfigure()
 }
 
-final class FavoritesViewModel{
+final class FavoritesViewModel {
     var condition = false
     private var homeViewModel: HomeViewModel
     
@@ -22,7 +22,7 @@ final class FavoritesViewModel{
     }
 }
 
-extension FavoritesViewModel: FavoritesViewModelProtocol{
+extension FavoritesViewModel: FavoritesViewModelProtocol {
     var getFavorites: Results<Favorite> {
         return homeViewModel.favoriteQuotes
     }

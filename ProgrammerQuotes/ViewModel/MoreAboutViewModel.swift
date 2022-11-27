@@ -6,19 +6,20 @@
 //
 import Foundation
 
-protocol MoreAboutViewModelProtocol{
+protocol MoreAboutViewModelProtocol {
     func getInfoAboutPerson()
 }
 
-final class MoreAboutViewModel{
+final class MoreAboutViewModel {
     weak var view: MoreAboutViewProtocol?
     var textAbout: String?
     var quote: Quote?
 }
 
-extension MoreAboutViewModel: MoreAboutViewModelProtocol{
-    func getInfoAboutPerson(){
+extension MoreAboutViewModel: MoreAboutViewModelProtocol {
+    func getInfoAboutPerson() {
         guard let quoteAuthor = quote?.author else {return}
+        
         APICallerWiki.shared.getInfo(with: quoteAuthor) { [weak self] result in
             switch result{
             case .success(let result):

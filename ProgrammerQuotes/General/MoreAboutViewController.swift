@@ -7,7 +7,7 @@
 import UIKit
 import SwiftUI
 
-protocol MoreAboutViewProtocol: AnyObject{
+protocol MoreAboutViewProtocol: AnyObject {
     func prepareGetMoreAboutText()
     func prepareFailedToGetMoreAboutText()
     func prepareGetAuthorName()
@@ -86,7 +86,7 @@ final class MoreAboutViewController: UIViewController {
         bodyAbout.setContentOffset(.zero, animated: true)
     }
     
-    private func applyConstraints(){
+    private func applyConstraints() {
         let greenBackgroundViewConstraints = [
             greenBackgroundView.widthAnchor.constraint(equalTo: view.widthAnchor),
             greenBackgroundView.heightAnchor.constraint(equalToConstant: view.frame.height * (1/3))
@@ -117,12 +117,12 @@ final class MoreAboutViewController: UIViewController {
         NSLayoutConstraint.activate(labelNameConstraints)
     }
     
-    private func applyResponsive(){
+    private func applyResponsive() {
         bodyAbout.contentSize.height = view.frame.height + 120
     }
 }
 
-extension MoreAboutViewController: MoreAboutViewProtocol{
+extension MoreAboutViewController: MoreAboutViewProtocol {
     func prepareGetAuthorName() {
         DispatchQueue.main.async { [weak self] in
             guard let authorName = self?.viewModel.quote?.author else {return}

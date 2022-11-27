@@ -6,22 +6,22 @@
 //
 import Foundation
 
-struct Wiki: Codable{
+struct Wiki: Codable {
     let query: Query
 }
 
-struct Query: Codable{
+struct Query: Codable {
     let pages: [Int:Page]
 }
 
-struct Page: Codable{
+struct Page: Codable {
     let pageid: Int
     let title: String
     let extract: String?
     let thumbnail: Thumbnail?
 }
 
-struct Thumbnail: Codable{
+struct Thumbnail: Codable {
     let source: String
     let width: Int
     let height: Int

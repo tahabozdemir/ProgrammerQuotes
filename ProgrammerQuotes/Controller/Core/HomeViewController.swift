@@ -7,7 +7,7 @@
 import UIKit
 import Kingfisher
 
-protocol HomeViewProtocol: AnyObject{
+protocol HomeViewProtocol: AnyObject {
     func prepareProfileImage()
     func prepareFailedToGetProfileImage()
     func prepareNameAndQuote()
@@ -150,7 +150,7 @@ final class HomeViewController: UIViewController {
     }()
     
     // MARK: Apply Constraints
-    private func applyConstraints(){
+    private func applyConstraints() {
         
         //Header Constraints
         let greenBackgroundViewConstraints = [
@@ -227,12 +227,12 @@ final class HomeViewController: UIViewController {
         NSLayoutConstraint.activate(buttonNextQuoteConstraints)
     }
     
-    private func makeResponsiveCircle(){
+    private func makeResponsiveCircle() {
         //print(RealmService.shared.getDatabasePath())
         profileUIImageView.layer.cornerRadius = view.frame.width / 6
     }
     
-    private func applyNavigationBarSettings(){
+    private func applyNavigationBarSettings() {
         //Removing Navigation Bar Background
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
@@ -243,15 +243,15 @@ final class HomeViewController: UIViewController {
     }
     
     //Buttons Functions
-    @objc private func addFavoritesToggle(){
+    @objc private func addFavoritesToggle() {
         viewModel?.addFavoritesToggle()
     }
     
-    @objc private func getQuote(){
+    @objc private func getQuote() {
         viewModel?.getQuote()
     }
     
-    @objc private func didTapMoreAbout(){
+    @objc private func didTapMoreAbout() {
         DispatchQueue.main.async { [weak self] in
             self?.navigationController?.pushViewController(MoreAboutViewController(quote: self?.viewModel?.quote) , animated: true)
         }
@@ -259,7 +259,7 @@ final class HomeViewController: UIViewController {
 }
 
 //MARK: Preparing HomeViewProtocol
-extension HomeViewController: HomeViewProtocol{
+extension HomeViewController: HomeViewProtocol {
     func prepareNameAndQuote() {
         DispatchQueue.main.async { [weak self] in
             guard let safeSelf = self else {return}
